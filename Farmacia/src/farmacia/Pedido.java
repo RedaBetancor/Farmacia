@@ -246,10 +246,12 @@ public class Pedido extends javax.swing.JFrame {
 
         if (text.isEmpty() && c == '0') {
             evt.consume();
-        } else if (Character.isDigit(c) && text.length() < 2) {
-
         } else {
-            evt.consume();
+            if (Character.isDigit(c) && text.length() < 2) {
+
+            } else {
+                evt.consume();
+            }
         }
     }//GEN-LAST:event_cantidadProductoKeyTyped
 
@@ -283,10 +285,14 @@ public class Pedido extends javax.swing.JFrame {
 
         if (principalSelected && secundariaSelected) {
             mensaje = "Para la farmacia situada en " + direccionPrincipal + " y para la situada en " + direccionSecundaria;
-        } else if (principalSelected) {
-            mensaje = "Para la farmacia situada en " + direccionPrincipal;
-        } else if (secundariaSelected) {
-            mensaje = "Para la farmacia situada en " + direccionSecundaria;
+        } else {
+            if (principalSelected) {
+                mensaje = "Para la farmacia situada en " + direccionPrincipal;
+            } else {
+                if (secundariaSelected) {
+                    mensaje = "Para la farmacia situada en " + direccionSecundaria;
+                }
+            }
         }
 
         return mensaje;
